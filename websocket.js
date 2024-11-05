@@ -1,6 +1,5 @@
 require('dotenv').config();
 const WebSocket = require('ws');
-const axios = require('axios');
 const Buffer = require('buffer').Buffer;
 
 // Configuration constants
