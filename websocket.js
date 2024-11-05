@@ -41,8 +41,6 @@ wss.on('connection', (ws) => {
         try {
             const data = JSON.parse(message.toString());
 
-            console.log("PCMU DATA >>> ",data)
-
             // Only process media events with payload
             if (data.event === 'media' && data.media?.payload) {
                 // Decode base64-encoded PCMU payload
@@ -87,9 +85,6 @@ wss.on('connection', (ws) => {
                 if (transcription) {
                     console.log("Transcription text >> ", transcription);
                 }
-            }
-            else {
-                console.log("Data >>> ", transcriptionData);
             }
         } catch (error) {
             console.error("Error processing Deepgram response:", error);
