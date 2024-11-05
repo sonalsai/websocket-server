@@ -15,7 +15,6 @@ const CONFIG = {
 const wss = new WebSocket.Server({ port: CONFIG.PORT });
 
 // Deepgram WebSocket URL with correct encoding parameters for PCMU
-// const deepgramSocketUrl = process.env.WS_URL;
 const deepgramSocketUrl = `wss://api.deepgram.com/v1/listen?encoding=${CONFIG.ENCODING}&sample_rate=${CONFIG.SAMPLE_RATE}&channels=${CONFIG.CHANNELS}`;
 const deepgramApiKey = process.env.DEEPGRAM_API_KEY;
 
@@ -86,6 +85,9 @@ wss.on('connection', (ws) => {
                 if (transcription) {
                     console.log("Transcription text >> ", transcription);
                 }
+            }
+            else {
+                console.log("Data >>> ", transcriptionData);
             }
         } catch (error) {
             console.error("Error processing Deepgram response:", error);
