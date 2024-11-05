@@ -48,6 +48,7 @@ wss.on('connection', (ws) => {
 
                 // Only send if Deepgram connection is open
                 if (isDeepgramConnected && targetWs.readyState === WebSocket.OPEN) {
+                    console.log("PCMU BUFFER == ",pcmuBuffer)
                     targetWs.send(pcmuBuffer);
                 }
             }
@@ -83,7 +84,7 @@ wss.on('connection', (ws) => {
             if (transcriptionData && transcriptionData.channel && transcriptionData.channel.alternatives) {
                 const transcription = transcriptionData.channel.alternatives[0].transcript;
                 if (transcription) {
-                    console.log("Transcription text >> ", transcription);
+                    console.log("Transcription text == ", transcription);
                 }
             }
         } catch (error) {
