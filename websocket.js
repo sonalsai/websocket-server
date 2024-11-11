@@ -40,6 +40,10 @@ wss.on('connection', (ws) => {
         try {
             const data = JSON.parse(message.toString());
 
+            console.log("<...........................>")
+            console.log(data)
+            console.log("<...........................>")
+
             // Only process media events with payload
             if (data.event === 'media' && data.media?.payload) {
                 // Decode base64-encoded PCMU payload
